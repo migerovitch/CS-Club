@@ -19,7 +19,8 @@ How to get Git working on your computer
 - In this folder, create a TextEdit file with any random text called whatever you like. 
 - Go to the GitHub Desktop Client:
 	- In the bottom left hand corner, click commit
-	- In the top bar click "push"
+	- In the top bar click "push to origin" (if not there click "fetch" first)
+- You should be all set!! Refresh the GitHub.com site to see if the changes appeared there
 
 
 --------------------------
