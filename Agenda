@@ -14,7 +14,7 @@ How to get Git working on your computer
 - Once this is done, go to our repository (project) page on github.com
 - Press the green "Clone or download" button and then "Open in Desktop"
 - Go to your GitHub Desktop Client and make sure that the project is configured correctly
-- It should create a local copy on your computer (most likely in your /Documents/GitHub/ folder)
+- It should create a local copy on your computer (most likely in your /Documents/GitHub/CS-Club folder)
 - In finder, find this local copy and add a folder called your name (ex. "John Smith's Folder")
 - In this folder, create a TextEdit file with any random text called whatever you like. 
 - Go to the GitHub Desktop Client:
