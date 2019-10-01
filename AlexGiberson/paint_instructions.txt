@@ -1,6 +1,10 @@
+Choose the framerate and the increment of movement per frame in the console before playing
+
 Paint game
 
 Use arrow keys to change direction
 
 Use q,w,e to increase r,g,b
 Use a,s,d to decrease r,g,b
+
+if you mash the rgb keys the game will probably crash
