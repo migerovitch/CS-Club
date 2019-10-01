@@ -1,0 +1,6 @@
+Paint game
+
+Use arrow keys to change direction
+
+Use q,w,e to increase r,g,b
+Use a,s,d to decrease r,g,b
