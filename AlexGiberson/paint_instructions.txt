@@ -1,6 +1,6 @@
 Choose the framerate and the increment of movement per frame in the console before playing
 
-Paint game
+Paint game - Use Python 3
 
 Use arrow keys to change direction
 
