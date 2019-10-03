@@ -1,7 +1,7 @@
 import pygame, sys 
 from pygame.locals import *
 import random
-import time
+import csv
 
 width = 600 #This can change
 height = 600 #This can change
@@ -9,7 +9,7 @@ playersize = 20 #This can change
 fps = 15 #This can change
 clock = pygame.time.Clock()
 
-#Create display
+#Create dis
 DISPLAY=pygame.display.set_mode((width,height))
 pygame.display.set_caption("waka waka waka")
 
@@ -21,31 +21,34 @@ grey = (128,128,128)
 darkBlue = (0,20,121)
 
 #starting coords of player
-pacX = 100
-pacY = 50
+pacX = 0
+pacY = 0
 
 yChange = 0
 xChange = 0
 
-#list of off-limits coords
-restrictY = []
-restrictX = []
+xy = []
+rx = []
+ry = []
+restrictedxy = []
+
+levelname = (input("Levelname (omit file tage):"))
 
 #if true then no entry
 touching = False
 
-
-
-#adds restricted coords to x and y lists for hardcoded block
-for i in range(140,441):
-	print(i)
-	restrictY.append(i)
-for i in range(140,441):
-	print(i)
-	restrictX.append(i)
-
 #if true then system exit
 gameExit = False
+
+csvfile =open(levelname +".csv",'r')
+obj=csv.reader(csvfile)
+for row in obj:
+	xy.append((row))
+
+def buildlevel(xy,screen,color):
+	for coord in xy:
+		pygame.draw.rect(screen,color,[float(coord[0]),float(coord[1]),float(coord[2]),float(coord[3])])
+
 
 #main game loop
 while gameExit == False:
@@ -70,14 +73,14 @@ while gameExit == False:
 			elif event.key == pygame.K_DOWN:
 				yChange = playersize/2
 				xChange = 0
-
+		"""
 		#Make player stop moving after keyup
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_LEFT or pygame.K_RIGHT:
 				xChange = 0
 			if event.key == pygame.K_UP or pygame.K_DOWN:
 				yChange = 0
-
+		"""
 	#if player goes out of bounds then move them to the other side of the screen
 	if pacX > width or pacX < 0 or pacY > height or pacY < 0: 
 		if pacX > width: pacX = 0
@@ -85,23 +88,28 @@ while gameExit == False:
 		if pacY > height: pacY = 0
 		if pacY < 0: pacY = height - playersize
 
-	#is it touching a boundary?
-	if pacX + xChange in restrictX and pacY + yChange in restrictY:
+	#is the movement selected going to intersect with a boundary?
+	"""
+	if pacX in rx and pacY in ry:
 		touching = True
 	else:
 		touching = False
+	"""
+	
+
 	
 	#if not touching a boundary then allow move
+	
 	if not touching:
 		pacX += xChange
 		pacY += yChange
 	elif touching == True:
 		print("Sorry, that's out of bounds...")
-
+	
 	#draw everything on the display
 	DISPLAY.fill(grey)
 	pygame.draw.rect(DISPLAY,yellow,[pacX,pacY,playersize,playersize])
-	pygame.draw.rect(DISPLAY,darkBlue,[150,150,300,300])
+	buildlevel(xy,DISPLAY,darkBlue)
 	pygame.display.update()
 	clock.tick(fps)
 
